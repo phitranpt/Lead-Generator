@@ -11,24 +11,37 @@ const styles = theme => ({
     textAlign: 'center'
   },
   card: {
+    height: 120,
     maxWidth: 200,
-    height: 180,
+    margin: '1%',
+    display: 'inline-block',
+    width: '100%',
     textAlign: 'center',
   },
-  auto: {
-    height: '100%',
+  cardMedia: {
+    height: 50,
+    width: 50,
+    top: '40%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    position: 'relative'
   },
-  media: {
-    position: 'relative',
-    textAlign: 'center',
+  cardTitle: {
+    color: 'grey',
+    paddingTop: '5%'
   },
-  title: {
+  mainTitle: {
     position: 'absolute',
     top: '20%',
     left: '20%',
     transform: 'translate(-50%, -50%)',
     color: 'white',
-  }
+  },
+  secondaryTitle: {
+    fontSize: 35,
+    marginTop: '1vh',
+    marginBottom: '1vh',
+  },
 });
 
 class Auto extends Component {
@@ -38,18 +51,54 @@ class Auto extends Component {
         <div className={classes.root}>
           <div className={classes.media}>
             <img src="/images/main.png" alt="main" width="100%" height="auto"/>
-            <h1 className={classes.title}>Insurance</h1>
+            <Typography className={classes.mainTitle}>Insurance</Typography>
           </div>
 
+          <div>
+            <Typography className={classes.secondaryTitle}>Let Us Compare Your Quote</Typography>
+          </div>
+
+          <div>
             <Card className={classes.card}>
+              <Typography className={classes.cardTitle}>Auto</Typography>
               <CardMedia
-                className={classes.auto}
-                image="/images/auto.jpg"
+                className={classes.cardMedia}
+                image="/images/auto.png"
                 title="auto"
               >
-              <Typography>Get Your Personalized Auto Insurance Quote</Typography>
               </CardMedia>
             </Card>
+
+            <Card className={classes.card}>
+              <Typography className={classes.cardTitle}>Home</Typography>
+              <CardMedia
+                className={classes.cardMedia}
+                image="/images/home.png"
+                title="auto"
+              >
+              </CardMedia>
+            </Card>
+
+            <Card className={classes.card}>
+              <Typography className={classes.cardTitle}>Life</Typography>
+              <CardMedia
+                className={classes.cardMedia}
+                image="/images/life.png"
+                title="auto"
+              >
+              </CardMedia>
+            </Card>
+
+            <Card className={classes.card}>
+              <Typography className={classes.cardTitle}>Business</Typography>
+              <CardMedia
+                className={classes.cardMedia}
+                image="/images/business.png"
+                title="auto"
+              >
+              </CardMedia>
+            </Card>
+          </div>
         </div>
       );
   }
