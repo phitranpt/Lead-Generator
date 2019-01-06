@@ -5,6 +5,7 @@ import propTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import { CardMedia, Typography } from '@material-ui/core';
+import MediaQuery from 'react-responsive';
 
 const styles = theme => ({
   root: {
@@ -32,8 +33,17 @@ const styles = theme => ({
   },
   mainTitle: {
     fontSize: 50,
+    fontWeight: '700',
     position: 'absolute',
     top: '25%',
+    left: '20%',
+    transform: 'translate(-50%, -50%)',
+    color: 'white',
+  },
+  mobileMainTitle: {
+    fontSize: 25,
+    position: 'absolute',
+    top: '15%',
     left: '20%',
     transform: 'translate(-50%, -50%)',
     color: 'white',
@@ -50,10 +60,20 @@ class Main extends Component {
     const { classes } = this.props;
       return (
         <div className={classes.root}>
-          <div className={classes.media}>
-            <img src="/images/main.png" alt="main" width="100%" height="auto"/>
-            <Typography className={classes.mainTitle}>Insurance</Typography>
-          </div>
+
+          <MediaQuery minWidth={760}>
+            <div className={classes.media}>
+              <img src="/images/main.png" alt="main" width="100%" height="auto"/>
+              <Typography className={classes.mainTitle}>Insurance</Typography>
+            </div>
+          </MediaQuery>
+
+          <MediaQuery maxWidth={761}>
+            <div className={classes.media}>
+              <img src="/images/main.png" alt="main" width="100%" height="auto"/>
+              <Typography className={classes.mobileMainTitle}>Insurance</Typography>
+            </div>
+          </MediaQuery>
 
           <div>
             <Typography className={classes.secondaryTitle}>Let Us Compare Your Quote</Typography>

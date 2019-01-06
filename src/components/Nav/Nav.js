@@ -43,6 +43,7 @@ const styles = theme => ({
   menuButton: {
     marginLeft: 12,
     marginRight: 20,
+    color: '#1abc9c',
   },
   grow: {
     flexGrow: 1,
