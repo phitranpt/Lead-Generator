@@ -108,6 +108,7 @@ class AutoForm extends Component {
                     Year
                 </InputLabel>
                 <Select
+                    native
                     value={this.state.year}
                     onChange={this.handleChange('year')}
                     input={
@@ -118,7 +119,7 @@ class AutoForm extends Component {
                     />
                     }
                 >
-                    <option value="Year" />
+                    <option value="" />
                     <option value={2019}>2019</option>
                     <option value={2018}>2018</option>
                     <option value={2017}>2017</option>
@@ -191,6 +192,7 @@ class AutoForm extends Component {
                     Please select number of years
                 </InputLabel>
                 <Select
+                    native
                     value={this.state.numYear}
                     onChange={this.handleChange('numYear')}
                     input={
@@ -258,6 +260,7 @@ class AutoForm extends Component {
                     Please select number of miles
                 </InputLabel>
                 <Select
+                    native
                     value={this.state.miles}
                     onChange={this.handleChange('miles')}
                     input={
