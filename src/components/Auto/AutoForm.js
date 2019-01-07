@@ -6,6 +6,7 @@ import {withStyles} from '@material-ui/core/styles';
 import ReactDOM from 'react-dom';
 
 import {
+    Button,
     OutlinedInput,
     InputLabel,
     FormControl,
@@ -32,16 +33,33 @@ const styles = theme => ({
         width: '100%',
     },
     stepLabel: {
-        marginTop: 30,
+        marginTop: 25,
+        color: 'black',
     },
     radio: {
         display: 'inline'
+    },
+    nextBtn: {
+        marginTop: 25,
+        width: '100%',
+        height: 50,
+        background: '#6200ee',
+            '&:hover': {
+                background: '#3700b3',
+            },
+        color: 'white'
+    },
+    addVehicleBtn: {
+        marginTop: 30,
+        width: '100%',
+        height: 50,
     },
 });
 
 class AutoForm extends Component {
 
     state = {
+        labelWidth: 0,
         year: '',
         make: '',
         model: '',
@@ -50,15 +68,23 @@ class AutoForm extends Component {
         finance: '',
         miles: '',
       };
-    
+
+      addVehicle = () => {
+          console.log('add vehicle btn works!');
+      };
+
       componentDidMount() {
         this.setState({
           labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
         });
-      }
+      };
     
       handleChange = name => event => {
         this.setState({ [name]: event.target.value });
+      };
+
+      nextBtn = () => {
+        console.log('next btn works!');
       };
 
   render() {
@@ -67,7 +93,12 @@ class AutoForm extends Component {
         <div>
 
             <StepLabel className={classes.stepLabel}>What vehicle would you like to insure?</StepLabel>
-            <FormControl variant="outlined" margin="normal" className={classes.formControl}>
+            <FormControl 
+                required
+                variant="outlined" 
+                margin="normal" 
+                className={classes.formControl}
+            >
                 <InputLabel
                     ref={ref => {
                     this.InputLabelRef = ref;
@@ -77,7 +108,6 @@ class AutoForm extends Component {
                     Year
                 </InputLabel>
                 <Select
-                    native
                     value={this.state.year}
                     onChange={this.handleChange('year')}
                     input={
@@ -146,7 +176,12 @@ class AutoForm extends Component {
             />
 
             <StepLabel className={classes.stepLabel}>How many years have you had this vehicle?</StepLabel>
-            <FormControl variant="outlined" margin="normal" className={classes.numYearForm}>
+            <FormControl
+                required
+                variant="outlined" 
+                margin="normal" 
+                className={classes.numYearForm}
+            >
                 <InputLabel
                     ref={ref => {
                         this.InputLabelRef = ref;
@@ -156,7 +191,6 @@ class AutoForm extends Component {
                     Please select number of years
                 </InputLabel>
                 <Select
-                    native
                     value={this.state.numYear}
                     onChange={this.handleChange('numYear')}
                     input={
@@ -184,6 +218,7 @@ class AutoForm extends Component {
                 
             <StepLabel className={classes.stepLabel}>Do you own, lease, or finance this vehicle?</StepLabel>
             <RadioGroup
+                required
                 name="finance"
                 className={classes.radio}
                 value={this.state.finance}
@@ -196,6 +231,7 @@ class AutoForm extends Component {
 
             <StepLabel className={classes.stepLabel}>What is the main purpose of this vehicle?</StepLabel>
             <RadioGroup
+                required
                 name="usage"
                 className={classes.radio}
                 value={this.state.usage}
@@ -207,7 +243,12 @@ class AutoForm extends Component {
             </RadioGroup>
 
             <StepLabel className={classes.stepLabel}>How many miles do you drive this vehicle annually?</StepLabel>
-            <FormControl variant="outlined" margin="normal" className={classes.miles}>
+            <FormControl 
+                required
+                variant="outlined" 
+                margin="normal" 
+                className={classes.miles}
+            >
                 <InputLabel
                     ref={ref => {
                         this.InputLabelRef = ref;
@@ -217,7 +258,6 @@ class AutoForm extends Component {
                     Please select number of miles
                 </InputLabel>
                 <Select
-                    native
                     value={this.state.miles}
                     onChange={this.handleChange('miles')}
                     input={
@@ -241,6 +281,7 @@ class AutoForm extends Component {
 
             <StepLabel className={classes.stepLabel}>Does this vehicle have an anti-theft locking device?</StepLabel>
             <RadioGroup
+                required
                 name="theft"
                 className={classes.radio}
                 value={this.state.theft}
@@ -252,6 +293,7 @@ class AutoForm extends Component {
 
             <StepLabel className={classes.stepLabel}>Do you keep this vehicle at your home address?</StepLabel>
             <RadioGroup
+                required
                 name="theft"
                 className={classes.radio}
                 value={this.state.theft}
@@ -260,6 +302,27 @@ class AutoForm extends Component {
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="No" control={<Radio />} label="No" />
             </RadioGroup>
+            
+            <StepLabel></StepLabel>
+
+            <Button 
+                className={classes.addVehicleBtn} 
+                variant="outlined" 
+                color="primary"
+                onClick={this.addVehicle}
+            >
+                + Add another vehicle
+            </Button>
+
+            <Button 
+                className={classes.nextBtn} 
+                variant="outlined" 
+                color="primary"
+                onClick={this.nextBtn}
+            >
+                Next
+            </Button>
+
         </div>
       );
   }

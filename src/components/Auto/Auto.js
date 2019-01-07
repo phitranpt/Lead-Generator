@@ -32,6 +32,13 @@ const styles = theme => ({
     borderBottom: '1px solid grey',
     boxShadow: 'none',
   },
+  text: {
+    marginBottom: 10,
+    fontWeight: 900,
+  },
+  textTwo: {
+    textAlign: 'justify',
+  },
 });
 
 class Auto extends Component {
@@ -63,9 +70,9 @@ class Auto extends Component {
 
           <Paper className={classes.paper} elevation={1}>
             <Typography className={classes.text} variant="h5" component="h3">
-              Please tell us a little more about your vehicle.
+              Tell us a little more about your vehicle.
             </Typography>
-            <Typography component="p">
+            <Typography className={classes.textTwo} component="p">
               Let us know your info. The more accurate it is, the more accurate your quote will be. We'll send your information over to the most appropriate agent.
             </Typography>
             <br></br>
