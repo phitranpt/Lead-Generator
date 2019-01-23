@@ -67,6 +67,8 @@ class AutoForm extends Component {
         numYear: '',
         finance: '',
         miles: '',
+        theft: '',
+        keepAtHome: '',
       };
 
       addVehicle = () => {
@@ -297,10 +299,10 @@ class AutoForm extends Component {
             <StepLabel className={classes.stepLabel}>Do you keep this vehicle at your home address?</StepLabel>
             <RadioGroup
                 required
-                name="theft"
+                name="keepAtHome"
                 className={classes.radio}
-                value={this.state.theft}
-                onChange={this.handleChange('theft')}
+                value={this.state.keepAtHome}
+                onChange={this.handleChange('keepAtHome')}
             >
                 <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
                 <FormControlLabel value="No" control={<Radio />} label="No" />

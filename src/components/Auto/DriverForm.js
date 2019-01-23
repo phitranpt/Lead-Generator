@@ -51,6 +51,9 @@ const styles = theme => ({
         width: '25%',
         float: 'right',
     },
+    martialStatus: {
+        width: '100%',
+    },
     nextBtn: {
         marginTop: 25,
         width: '100%',
@@ -256,98 +259,78 @@ class DriverForm extends Component {
                 value={this.state.zip}
                 onChange={this.handleChange('zip')}
             />
-
-
-
-            
-                
-            <StepLabel className={classes.stepLabel}>Do you own, lease, or finance this vehicle?</StepLabel>
+  
+            <StepLabel className={classes.stepLabel}>Gender</StepLabel>
             <RadioGroup
                 required
-                name="finance"
+                name="gender"
                 className={classes.radio}
-                value={this.state.finance}
-                onChange={this.handleChange('finance')}
+                value={this.state.gender}
+                onChange={this.handleChange('gender')}
             >
-                <FormControlLabel value="Own" control={<Radio />} label="Own" />
-                <FormControlLabel value="Lease" control={<Radio />} label="Lease" />
-                <FormControlLabel value="Finance" control={<Radio />} label="Finance" />
+                <FormControlLabel value="Male" control={<Radio />} label="Male" />
+                <FormControlLabel value="Female" control={<Radio />} label="Female" />
             </RadioGroup>
 
-            <StepLabel className={classes.stepLabel}>What is the main purpose of this vehicle?</StepLabel>
+            <StepLabel className={classes.stepLabel}>Date of Birth</StepLabel>
+            <TextField
+                id="date"
+                type="date"
+                margin="normal"
+                variant="outlined"
+                className={classes.textField}
+                value={this.state.dob}
+                InputLabelProps={{
+                shrink: true,
+                }}
+            />
+
+            <StepLabel className={classes.stepLabel}>Do you have a valid drivers license?</StepLabel>
             <RadioGroup
                 required
-                name="usage"
+                name="license"
                 className={classes.radio}
-                value={this.state.usage}
-                onChange={this.handleChange('usage')}
+                value={this.state.license}
+                onChange={this.handleChange('license')}
             >
-                <FormControlLabel value="Commute" control={<Radio />} label="Commute" />
-                <FormControlLabel value="Pleasure" control={<Radio />} label="Pleasure" />
-                <FormControlLabel value="Business" control={<Radio />} label="Business" />
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="No" control={<Radio />} label="No" />
             </RadioGroup>
 
-            <StepLabel className={classes.stepLabel}>How many miles do you drive this vehicle annually?</StepLabel>
-            <FormControl 
+            <StepLabel className={classes.stepLabel}>Martial Status</StepLabel>
+            <FormControl
                 required
                 variant="outlined" 
                 margin="normal" 
-                className={classes.miles}
+                className={classes.martialStatus}
             >
                 <InputLabel
                     ref={ref => {
                         this.InputLabelRef = ref;
                         }}
-                        htmlFor="outlined-miles-native-simple"
+                        htmlFor="outlined-martialStatus-native-simple"
                 >
-                    Please select number of miles
+                    Select
                 </InputLabel>
                 <Select
                     native
-                    value={this.state.miles}
-                    onChange={this.handleChange('miles')}
+                    value={this.state.martialStatus}
+                    onChange={this.handleChange('martialStatus')}
                     input={
                     <OutlinedInput
-                        name="miles"
+                        name="martialStatus"
                         labelWidth={this.state.labelWidth}
-                        id="outlined-miles-native-simple"
+                        id="outlined-martialStatus-native-simple"
                     />
                     }
                 >
                     <option value="" />
-                    <option value={0-4999}>0-4999 miles</option>
-                    <option value={5000-9999}>5000-9999 miles</option>
-                    <option value={10000-14999}>10,000-14,999 miles</option>
-                    <option value={15000-19999}>15,000-19,999 miles</option>
-                    <option value={20000-24999}>20,000-24,999 miles</option>
-                    <option value={25000-29999}>25,000-29,999 miles</option>
-                    <option value={30000}>30,000+ miles</option>
+                    <option value={'Single'}>Single</option>
+                    <option value={'Married'}>Married</option>
+                    <option value={'Divorced'}>Divorced</option>
+                    <option value={'Widowed'}>Widowed</option>
                 </Select>
             </FormControl>
-
-            <StepLabel className={classes.stepLabel}>Does this vehicle have an anti-theft locking device?</StepLabel>
-            <RadioGroup
-                required
-                name="theft"
-                className={classes.radio}
-                value={this.state.theft}
-                onChange={this.handleChange('theft')}
-            >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="No" control={<Radio />} label="No" />
-            </RadioGroup>
-
-            <StepLabel className={classes.stepLabel}>Do you keep this vehicle at your home address?</StepLabel>
-            <RadioGroup
-                required
-                name="theft"
-                className={classes.radio}
-                value={this.state.theft}
-                onChange={this.handleChange('theft')}
-            >
-                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
-                <FormControlLabel value="No" control={<Radio />} label="No" />
-            </RadioGroup>
             
             <StepLabel></StepLabel>
 
@@ -357,7 +340,7 @@ class DriverForm extends Component {
                 color="primary"
                 onClick={this.addVehicle}
             >
-                + Add another vehicle
+                + Add another driver
             </Button>
 
             <Button 
@@ -366,7 +349,7 @@ class DriverForm extends Component {
                 color="primary"
                 onClick={this.nextBtn}
             >
-                Next
+                Submit Application
             </Button>
 
         </div>
