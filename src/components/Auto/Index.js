@@ -12,7 +12,7 @@ import {
 import AutoForm from './AutoForm';
 import AutoTitleText from './AutoTitleText';
 import DriverTitleText from './DriverTitleText';
-import Driver from './DriverTitleText';
+import DriverForm from './DriverForm';
 import Person from '@material-ui/icons/Person';
 import DirectionsCar from '@material-ui/icons/DirectionsCar';
 
@@ -79,17 +79,17 @@ class Index extends Component {
 
           {value === 0 && <TabContainer>
             <Paper className={classes.paper} elevation={1}>
-            <AutoTitleText />
-            <br></br>
-            <AutoForm />
+              <AutoTitleText />
+              <br></br>
+              <AutoForm />
             </Paper>
           </TabContainer>}
           
           {value === 1 && <TabContainer>
             <Paper className={classes.paper} elevation={1}>
-            <DriverTitleText />
-            <br></br>
-            {/* <DriverForm /> */}
+              <DriverTitleText />
+              <br></br>
+              <DriverForm />
             </Paper>
           </TabContainer>}
 

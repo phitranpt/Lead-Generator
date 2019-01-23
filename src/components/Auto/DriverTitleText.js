@@ -22,10 +22,10 @@ class DriverTitleText extends Component {
       return (
         <div>
             <Typography className={classes.text} variant="h5" component="h3">
-              Tell us about your yourself.
+              Tell us about yourself.
             </Typography>
             <Typography className={classes.textTwo} component="p">
-              Please fill out your personal information below for our agents to get to know you better.
+              Please fill out your personal information below so our agents can get to know you better.  We're only using this information to get the best possible quote for you.  We will never send you unwanted emails or calls.
             </Typography>
         </div>
       );
