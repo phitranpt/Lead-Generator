@@ -14,7 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import Main from '../Main/Main';
-import Auto from '../Auto/Auto';
+import Auto from '../Auto/Index';
 import Home from '../Home/Home';
 import Life from '../Life/Life';
 import Business from '../Business/Business';

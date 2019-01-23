@@ -4,16 +4,19 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import { 
-  Paper, 
-  Typography,
+  Paper,
   Tab,
   Tabs,
+  Typography,
 } from '@material-ui/core';
 import AutoForm from './AutoForm';
+import AutoTitleText from './AutoTitleText';
+import DriverTitleText from './DriverTitleText';
+import Driver from './DriverTitleText';
 import Person from '@material-ui/icons/Person';
 import DirectionsCar from '@material-ui/icons/DirectionsCar';
 
-const styles = theme => ({
+const styles = ({
   paper: {
     paddingRight: 80,
     paddingLeft: 80,
@@ -32,16 +35,21 @@ const styles = theme => ({
     borderBottom: '1px solid grey',
     boxShadow: 'none',
   },
-  text: {
-    marginBottom: 10,
-    fontWeight: 900,
-  },
-  textTwo: {
-    textAlign: 'justify',
-  },
 });
 
-class Auto extends Component {
+function TabContainer(props) {
+  return (
+    <Typography component="div">
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: propTypes.node.isRequired,
+};
+
+class Index extends Component {
 
   state = {
     value: 0,
@@ -53,6 +61,7 @@ class Auto extends Component {
 
   render() {
     const { classes } = this.props;
+    const { value } = this.state;
       return (
         <div>
           <Paper className={classes.tabs}>
@@ -68,16 +77,23 @@ class Auto extends Component {
             </Tabs>
           </Paper>
 
-          <Paper className={classes.paper} elevation={1}>
-            <Typography className={classes.text} variant="h5" component="h3">
-              Tell us a little more about your vehicle.
-            </Typography>
-            <Typography className={classes.textTwo} component="p">
-              Let us know your info. The more accurate it is, the more accurate your quote will be. We'll send your information over to the most appropriate agent.
-            </Typography>
+          {value === 0 && <TabContainer>
+            <Paper className={classes.paper} elevation={1}>
+            <AutoTitleText />
             <br></br>
-            <AutoForm/>
-          </Paper>
+            <AutoForm />
+            </Paper>
+          </TabContainer>}
+          
+          {value === 1 && <TabContainer>
+            <Paper className={classes.paper} elevation={1}>
+            <DriverTitleText />
+            <br></br>
+            {/* <DriverForm /> */}
+            </Paper>
+          </TabContainer>}
+
+          
         </div>
       );
   }
@@ -87,9 +103,9 @@ const mapStateToProps = reduxState => ({
   reduxState,
 });
 
-Auto.propTypes = {
+Index.propTypes = {
   classes: propTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(Auto));
+export default connect(mapStateToProps)(withStyles(styles)(Index));
 
