@@ -18,16 +18,13 @@ import {
     Radio,
 } from '@material-ui/core';
 
-const styles = theme => ({
+const styles = ({
     formControl: {
         width: '48%',
     },
     formControlTwo: {
         width: '48%',
         float: 'right',
-    },
-    email: {
-        width: '100%',
     },
     radio: {
         display: 'inline'
@@ -51,7 +48,7 @@ const styles = theme => ({
         width: '25%',
         float: 'right',
     },
-    martialStatus: {
+    dropDownForm: {
         width: '100%',
     },
     nextBtn: {
@@ -124,16 +121,27 @@ class DriverForm extends Component {
                 onChange={this.handleChange('lastName')}
             />
             
-            <StepLabel className={classes.stepLabel}>Email</StepLabel>
+            <StepLabel className={classes.stepLabel}>Contact Information</StepLabel>
             <TextField
                 required
                 id="outlined-required"
                 label="Email Address"
-                className={classes.email}
+                className={classes.formControl}
                 margin="normal"
                 variant="outlined"
                 value={this.state.email}
                 onChange={this.handleChange('email')}
+            />
+
+            <TextField
+                required
+                id="outlined-required"
+                label="Phone"
+                className={classes.formControlTwo}
+                margin="normal"
+                variant="outlined"
+                value={this.state.phone}
+                onChange={this.handleChange('phone')}
             />
 
             <StepLabel className={classes.stepLabel}>Address</StepLabel>
@@ -285,7 +293,7 @@ class DriverForm extends Component {
                 }}
             />
 
-            <StepLabel className={classes.stepLabel}>Do you have a valid drivers license?</StepLabel>
+            <StepLabel className={classes.stepLabel}>Do you have a valid US driver's license?</StepLabel>
             <RadioGroup
                 required
                 name="license"
@@ -297,30 +305,30 @@ class DriverForm extends Component {
                 <FormControlLabel value="No" control={<Radio />} label="No" />
             </RadioGroup>
 
-            <StepLabel className={classes.stepLabel}>Martial Status</StepLabel>
+            <StepLabel className={classes.stepLabel}>Marital Status</StepLabel>
             <FormControl
                 required
                 variant="outlined" 
                 margin="normal" 
-                className={classes.martialStatus}
+                className={classes.dropDownForm}
             >
                 <InputLabel
                     ref={ref => {
                         this.InputLabelRef = ref;
                         }}
-                        htmlFor="outlined-martialStatus-native-simple"
+                        htmlFor="outlined-maritalStatus-native-simple"
                 >
                     Select
                 </InputLabel>
                 <Select
                     native
-                    value={this.state.martialStatus}
-                    onChange={this.handleChange('martialStatus')}
+                    value={this.state.maritalStatus}
+                    onChange={this.handleChange('maritalStatus')}
                     input={
                     <OutlinedInput
-                        name="martialStatus"
+                        name="maritalStatus"
                         labelWidth={this.state.labelWidth}
-                        id="outlined-martialStatus-native-simple"
+                        id="outlined-maritalStatus-native-simple"
                     />
                     }
                 >
@@ -329,6 +337,41 @@ class DriverForm extends Component {
                     <option value={'Married'}>Married</option>
                     <option value={'Divorced'}>Divorced</option>
                     <option value={'Widowed'}>Widowed</option>
+                </Select>
+            </FormControl>
+
+            <StepLabel className={classes.stepLabel}>Credit Score</StepLabel>
+            <FormControl
+                required
+                variant="outlined" 
+                margin="normal" 
+                className={classes.dropDownForm}
+            >
+                <InputLabel
+                    ref={ref => {
+                        this.InputLabelRef = ref;
+                        }}
+                        htmlFor="outlined-creditScore-native-simple"
+                >
+                    Select
+                </InputLabel>
+                <Select
+                    native
+                    value={this.state.creditScore}
+                    onChange={this.handleChange('creditScore')}
+                    input={
+                    <OutlinedInput
+                        name="maritalStatus"
+                        labelWidth={this.state.labelWidth}
+                        id="outlined-creditScore-native-simple"
+                    />
+                    }
+                >
+                    <option value="" />
+                    <option value={'Excellent (720-850)'}>Excellent (720-850)</option>
+                    <option value={'Good (690-719)'}>Good (690-719)</option>
+                    <option value={'Average (630-689)'}>Average (630-689)</option>
+                    <option value={'Poor (350-629)'}>Poor (350-629)</option>
                 </Select>
             </FormControl>
             
