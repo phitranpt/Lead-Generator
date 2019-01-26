@@ -104,8 +104,10 @@ class DriverForm extends Component {
         this.setState({ [name]: event.target.value });
       };
 
+      //SEND AUTO FORM POST REQUEST TO DATABASE
       submitAppBtn = () => {
         console.log('submit btn works!', this.state);
+        this.props.dispatch( { type: 'SEND_AUTO_FORM', payload: this.state })
       };
 
   render() {
@@ -115,8 +117,6 @@ class DriverForm extends Component {
 
             <StepLabel className={classes.stepLabel}>Name</StepLabel>
             <TextField
-                required
-                id="outlined-required"
                 label="First Name"
                 className={classes.formControl}
                 margin="normal"
@@ -126,8 +126,6 @@ class DriverForm extends Component {
             />
 
             <TextField
-                required
-                id="outlined-required"
                 label="Last Name"
                 className={classes.formControlTwo}
                 margin="normal"
@@ -138,8 +136,6 @@ class DriverForm extends Component {
             
             <StepLabel className={classes.stepLabel}>Contact Information</StepLabel>
             <TextField
-                required
-                id="outlined-required"
                 label="Email Address"
                 className={classes.formControl}
                 margin="normal"
@@ -149,8 +145,6 @@ class DriverForm extends Component {
             />
 
             <TextField
-                required
-                id="outlined-required"
                 label="Phone"
                 className={classes.formControlTwo}
                 margin="normal"
@@ -161,8 +155,6 @@ class DriverForm extends Component {
 
             <StepLabel className={classes.stepLabel}>Address</StepLabel>
             <TextField
-                required
-                id="outlined-required"
                 label="Street"
                 className={classes.street}
                 margin="normal"
@@ -181,8 +173,6 @@ class DriverForm extends Component {
             />
 
             <TextField
-                required
-                id="outlined-required"
                 label="City"
                 className={classes.city}
                 margin="normal"
@@ -271,8 +261,6 @@ class DriverForm extends Component {
             </FormControl>
 
             <TextField
-                required
-                id="outlined-required"
                 label="Zip Code"
                 className={classes.zip}
                 margin="normal"
@@ -283,7 +271,6 @@ class DriverForm extends Component {
   
             <StepLabel className={classes.stepLabel}>Gender</StepLabel>
             <RadioGroup
-                required
                 name="gender"
                 className={classes.radio}
                 value={this.state.gender}
