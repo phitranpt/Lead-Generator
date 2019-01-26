@@ -61,7 +61,7 @@ const styles = ({
             },
         color: 'white'
     },
-    addVehicleBtn: {
+    addDriverBtn: {
         marginTop: 30,
         width: '100%',
         height: 50,
@@ -71,8 +71,23 @@ const styles = ({
 class DriverForm extends Component {
 
     state = {
+        labelWidth: 0,
         firstName: '',
         lastName: '',
+        email: '',
+        phone: '',
+        street: '',
+        unit: '',
+        city: '',
+        state: '',
+        zip: '',
+        gender: '',
+        dob: '',
+        license: '',
+        maritalStatus: '',
+        creditScore: '',
+        currentAutoInsurance: '',
+        tickets: '',
       };
 
       addVehicle = () => {
@@ -89,8 +104,8 @@ class DriverForm extends Component {
         this.setState({ [name]: event.target.value });
       };
 
-      nextBtn = () => {
-        console.log('next btn works!');
+      submitAppBtn = () => {
+        console.log('submit btn works!', this.state);
       };
 
   render() {
@@ -157,8 +172,6 @@ class DriverForm extends Component {
             />
 
             <TextField
-                required
-                id="outlined-required"
                 label="Unit"
                 className={classes.unit}
                 margin="normal"
@@ -288,6 +301,7 @@ class DriverForm extends Component {
                 variant="outlined"
                 className={classes.textField}
                 value={this.state.dob}
+                onChange={this.handleChange('dob')}
                 InputLabelProps={{
                 shrink: true,
                 }}
@@ -374,14 +388,87 @@ class DriverForm extends Component {
                     <option value={'Poor (350-629)'}>Poor (350-629)</option>
                 </Select>
             </FormControl>
-            
+
+            <StepLabel className={classes.stepLabel}>Auto Insurance</StepLabel>
+            <TextField
+                label="Current Insurance"
+                className={classes.formControl}
+                margin="normal"
+                variant="outlined"
+                value={this.state.currentAutoInsurance}
+                onChange={this.handleChange('currentAutoInsurance')}
+            />
+
+            <FormControl 
+                variant="outlined" 
+                margin="normal" 
+                className={classes.formControlTwo}
+            >
+                <InputLabel
+                    ref={ref => {
+                        this.InputLabelRef = ref;
+                        }}
+                        htmlFor="outlined-currentAutoInsurance-native-simple"
+                >
+                    Insured in the last 30 days?
+                </InputLabel>
+                <Select
+                    native
+                    value={this.state.currentAutoInsurance}
+                    onChange={this.handleChange('currentAutoInsurance')}
+                    input={
+                    <OutlinedInput
+                        name="currentAutoInsurance"
+                        labelWidth={this.state.labelWidth}
+                        id="outlined-currentAutoInsurance-native-simple"
+                    />
+                    }
+                >
+                    <option value="" />
+                    <option value={'Yes'}>Yes</option>
+                    <option value={'No'}>No</option>
+                </Select>
+            </FormControl>
+
+            <StepLabel className={classes.stepLabel}>Auto History</StepLabel>
+            <FormControl 
+                variant="outlined" 
+                margin="normal" 
+                className={classes.dropDownForm}
+            >
+                <InputLabel
+                    ref={ref => {
+                        this.InputLabelRef = ref;
+                        }}
+                        htmlFor="outlined-tickets-native-simple"
+                >
+                    Do you have any tickets?
+                </InputLabel>
+                <Select
+                    native
+                    value={this.state.tickets}
+                    onChange={this.handleChange('tickets')}
+                    input={
+                    <OutlinedInput
+                        name="tickets"
+                        labelWidth={this.state.labelWidth}
+                        id="outlined-tickets-native-simple"
+                    />
+                    }
+                >
+                    <option value="" />
+                    <option value={'Yes'}>Yes</option>
+                    <option value={'No'}>No</option>
+                </Select>
+            </FormControl>
+
             <StepLabel></StepLabel>
 
             <Button 
-                className={classes.addVehicleBtn} 
+                className={classes.addDriverBtn} 
                 variant="outlined" 
                 color="primary"
-                onClick={this.addVehicle}
+                onClick={this.addDriver}
             >
                 + Add another driver
             </Button>
@@ -390,7 +477,7 @@ class DriverForm extends Component {
                 className={classes.nextBtn} 
                 variant="outlined" 
                 color="primary"
-                onClick={this.nextBtn}
+                onClick={this.submitAppBtn}
             >
                 Submit Application
             </Button>
