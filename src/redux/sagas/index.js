@@ -7,6 +7,12 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 
 function* sendAutoFormSaga(action) {
   console.log('in sendAutoFormSaga', action.payload);
+  try {
+    yield call(axios.post, '/api/autoform/', action.payload);
+  }
+  catch(error) {
+    console.log('error with POST in autoform', error);
+  }
 }
 
 export default function* rootSaga() {
