@@ -8,12 +8,11 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     console.log('in auto router', req.body);
-    const autoForm = req.body;
     const queryValues = [
-        autoForm.firstName,
-        autoForm.lastName,
+        req.body.firstName,
+        req.body.lastName,
     ]
-    const sqlText = `INSERT INTO contact ("first_name, last_name") VALUES ($1, $2);`;
+    const sqlText = `INSERT INTO contact (first_name, last_name) VALUES ($1, $2);`;
     pool.query(sqlText, queryValues)
     .then(() => {
         res.sendStatus(201);
