@@ -87,6 +87,7 @@ class DriverForm extends Component {
         maritalStatus: '',
         creditScore: '',
         currentAutoInsurance: '',
+        insured: '',
         tickets: '',
       };
 
@@ -401,8 +402,8 @@ class DriverForm extends Component {
                 </InputLabel>
                 <Select
                     native
-                    value={this.state.currentAutoInsurance}
-                    onChange={this.handleChange('currentAutoInsurance')}
+                    value={this.state.insured}
+                    onChange={this.handleChange('insured')}
                     input={
                     <OutlinedInput
                         name="currentAutoInsurance"
