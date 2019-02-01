@@ -91,8 +91,9 @@ class DriverForm extends Component {
         tickets: '',
       };
 
-      addVehicle = () => {
-          console.log('add vehicle btn works!');
+      //ADD ANOTHER DRIVER TO INSURE
+      addDriver = () => {
+          console.log('add driver btn works!');
       };
 
       componentDidMount() {
