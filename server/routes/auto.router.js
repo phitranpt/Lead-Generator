@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
     
 });
 
+//POST DRIVER INFO INTO CONTACT TABLE
 router.post('/', (req, res) => {
     console.log('in auto router', req.body);
     const q = req.body;
@@ -45,8 +46,9 @@ router.post('/', (req, res) => {
         credit_score,
         auto_insurance,
         insured_30_days,
-        tickets,
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17,);`;
+        tickets
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17);`;
+
     pool.query(sqlText, queryValues)
     .then(() => {
         res.sendStatus(201);
